@@ -1,0 +1,21 @@
+{
+  "name": "gateways-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "cd frontend && pnpm dev",
+    "backend": "cd server && pnpm start",
+    "init": "cd server && pnpm i && cd ../frontend && pnpm i && cd ../",
+    "dev": "concurrently \"pnpm backend\" \"pnpm frontend\"",
+    "build": "concurrently \"cd server && pnpm build\" \"cd frontend && pnpm build\"",
+    "start": "concurrently \"cd server && pnpm start\" \"cd frontend && pnpm preview\"",
+    "test": "cd server && pnpm test"
+  },
+  "keywords": [],
+  "author": "Massick",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.2.0"
+  }
+}
