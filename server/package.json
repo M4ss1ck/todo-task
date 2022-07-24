@@ -1,7 +1,7 @@
 {
-  "name": "express_rest_service",
+  "name": "todo_backend",
   "version": "1.0.0",
-  "description": "REST service for storing information about gateways and their associated devices",
+  "description": "REST service for TODO app",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
