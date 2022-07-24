@@ -1,8 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
 import Knex from "knex";
-import { knexConfig } from "./knexfile"
+import knexConfig from "./knexfile"
 import { Model, ForeignKeyViolationError, ValidationError } from 'objection';
+import { getToDos } from "./functions";
 
 // Initialize knex.
 const knex = Knex(knexConfig)
@@ -20,6 +21,8 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "*");
   next();
 });
+
+app.get("/todos", getToDos)
 
 // app.get("/gateway/list", async (req, res) => {
 //   const gateways = await prisma.gateway.findMany({
