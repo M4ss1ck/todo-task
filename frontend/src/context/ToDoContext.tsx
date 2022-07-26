@@ -14,6 +14,7 @@ interface ToDo {
 interface ToDoContextValue {
     createToDo: (data: ToDo) => Promise<void>;
     todos: ToDo[];
+    setTodos: (todos: ToDo[]) => void
     updateToDo: (toDoId: number, data: ToDo) => Promise<void>;
     deleteToDo: (toDoId: number) => Promise<void>;
     changeView: (value: string) => void;
@@ -56,6 +57,7 @@ export const ToDoProvider = ({ children }: ToDoProviderProps) => {
     const value = {
         createToDo,
         todos,
+        setTodos,
         updateToDo,
         deleteToDo,
         changeView,
