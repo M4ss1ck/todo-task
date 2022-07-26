@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.header {
+    @apply font-bold text-xl mt-4 md:text-4xl
+}
