@@ -1,12 +1,13 @@
 {
-  "name": "gateways-test",
+  "name": "todo_app_monorepo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Todo app with GatsbyJS frontend and Express + Knex + Objection + PostgreSQL backend",
   "main": "index.js",
   "scripts": {
+    "first": "cd server && pnpm i && cd ../frontend && pnpm i && cd ../",
     "frontend": "cd frontend && pnpm dev",
     "backend": "cd server && pnpm start",
-    "init": "cd server && pnpm i && cd ../frontend && pnpm i && cd ../",
+    "dev:backend": "cd server && pnpm dev",
     "dev": "concurrently \"pnpm backend\" \"pnpm frontend\"",
     "build": "concurrently \"cd server && pnpm build\" \"cd frontend && pnpm build\"",
     "start": "concurrently \"cd server && pnpm start\" \"cd frontend && pnpm preview\"",
