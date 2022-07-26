@@ -1,6 +1,10 @@
 // @ts-check
 module.exports = {
   darkMode: `class`,
-  content: [`./src/**/*.{js,jsx,ts,tsx}`],
+  content: [
+    "./src/pages/**/*.{js,jsx,ts,tsx}",
+    "./src/components/**/*.{js,jsx,ts,tsx}",
+    "./src/context/**/*.{js,jsx,ts,tsx}",
+  ],
   plugins: [require("daisyui")],
 };
