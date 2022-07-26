@@ -10,6 +10,7 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [
     `gatsby-plugin-pnpm`,
+    `gatsby-plugin-postcss`,
   ],
 }
 
