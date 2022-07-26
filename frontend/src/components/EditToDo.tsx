@@ -1,19 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import Navigation from './Nav';
 import { useToDoContext } from '../context/ToDoContext';
+import http from '../utils/http';
+
+interface ToDo {
+    id?: number
+    status: "pending" | "done"
+    task: string
+}
 
 const EditToDo = () => {
-    const { updateToDo, toDoId, todos } = useToDoContext()
+    const { updateToDo, toDoId, todos, changeView, setTodos } = useToDoContext()
     const currentToDo = todos.find(todo => todo.id === toDoId)
     const [status, setStatus] = useState<"pending" | "done">(currentToDo?.status ?? "pending")
     const [task, setTask] = useState(currentToDo?.task ?? "")
-    // const data = JSON.stringify({
-    //     "data": {
-    //         "status": status,
-    //         "task": task
-    //     }
-    // })
-    const handleEditToDo = () => updateToDo(toDoId, { status, task })
+
+    const readAllToDos = async () => {
+        const response = await http.get("/todos");
+        const responseArr = Object.values(response.data) as ToDo[];
+        setTodos(responseArr);
+    };
+
+    const handleEditToDo = async () => {
+        await updateToDo(toDoId, { status, task })
+        await readAllToDos();
+        changeView("ToDoList")
+    }
     return <div className='min-h-screen flex flex-col'>
         <h2 className='header'>Edit ToDo</h2>
         <div className='form-control flex flex-row'>
