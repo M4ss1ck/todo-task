@@ -6,6 +6,7 @@ interface ToDoProviderProps {
 }
 
 interface ToDo {
+    id?: number
     status: "pending" | "done"
     task: string
 }
