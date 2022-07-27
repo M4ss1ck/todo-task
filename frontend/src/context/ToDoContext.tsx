@@ -34,22 +34,26 @@ export const ToDoProvider = ({ children }: ToDoProviderProps) => {
     const [view, setView] = useState("ToDoList")
     const [toDoId, setToDoId] = useState(0)
     const createToDo = async (data: ToDo) => {
-        await http.post("/todos", data)
+        await http.post("/todos", data).catch(e => console.log(e))
     }
     const updateToDo = async (toDoId: number, data: ToDo) => {
-        await http.put(`/todos/${toDoId}`, data)
+        await http.put(`/todos/${toDoId}`, data).catch(e => console.log(e))
     }
     const deleteToDo = async (toDoId: number) => {
-        await http.delete(`/todos/${toDoId}`)
+        await http.delete(`/todos/${toDoId}`).catch(e => console.log(e))
     }
     const changeView = (value: string) => setView(value)
     const getToDoId = (id: number) => setToDoId(id)
 
     useEffect(() => {
         const readAllToDos = async () => {
-            const response = await http.get("/todos");
-            const responseArr = Object.values(response.data) as ToDo[];
-            setTodos(responseArr);
+            await http.get("/todos").then(
+                response => {
+                    const responseArr = Object.values(response.data) as ToDo[];
+                    setTodos(responseArr);
+                }
+            ).catch(e => console.log(e));
+
         };
         readAllToDos();
     }, []);

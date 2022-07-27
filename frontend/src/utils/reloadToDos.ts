@@ -9,5 +9,5 @@ interface ToDo {
 
 export const reloadToDos = async () => {
     const response = await http.get("/todos");
-    return Object.values(response.data) as ToDo[];
+    return "data" in response ? Object.values(response.data) as ToDo[] : [];
 };
