@@ -15,9 +15,9 @@ const ToDoList = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </label>
                     <div tabIndex={0} className="w-64 border shadow card compact dropdown-content bg-base-100 rounded-box border-content">
-                        <div className="card-body">
-                            <h2 className="card-title">This is the ToDo list</h2>
-                            <p>Tap the pencil icon to edit a ToDo or the trash bin to delete it</p>
+                        <div className="text-left card-body">
+                            <p>Tap the pencil icon to edit a ToDo or the trash bin to delete it.</p>
+                            <p>You can also add a new one.</p>
                         </div>
                     </div>
                 </div>
