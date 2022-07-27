@@ -7,7 +7,7 @@ const ToDoList = () => {
     const { todos, changeView } = useToDoContext()
     return <div className='min-h-screen flex flex-col items-center md:text-xl'>
         <section className='flex flex-row'>
-            <h1 className='header'>List</h1>
+            <h1 className='header'>My ToDo list</h1>
             <div className="dropdown dropdown-end mt-4">
                 <label tabIndex={0} className="btn btn-circle btn-ghost btn-xs text-info">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
