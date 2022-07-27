@@ -4,14 +4,9 @@
   "description": "Todo app with GatsbyJS frontend and Express + Knex + Objection + PostgreSQL backend",
   "main": "index.js",
   "scripts": {
-    "first": "cd server && pnpm i && cd ../frontend && pnpm i && cd ../",
-    "frontend": "cd frontend && pnpm dev",
-    "backend": "cd server && pnpm start",
-    "dev:backend": "cd server && pnpm dev",
-    "dev": "concurrently \"pnpm backend\" \"pnpm frontend\"",
+    "dev": "concurrently \"cd server && pnpm dev\" \"cd frontend && pnpm dev\"",
     "build": "concurrently \"cd server && pnpm build\" \"cd frontend && pnpm build\"",
-    "start": "concurrently \"cd server && pnpm start\" \"cd frontend && pnpm preview\"",
-    "test": "cd server && pnpm test"
+    "start": "concurrently \"cd server && pnpm start\" \"cd frontend && pnpm serve\""
   },
   "keywords": [],
   "author": "Massick",
