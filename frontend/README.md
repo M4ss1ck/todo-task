@@ -1,5 +1,7 @@
 # ToDo app frontend
 
+![ToDo list](../main.png)
+
 [GatsbyJS](https://www.gatsbyjs.com/) frontend for a TODO app
 
 ## Features

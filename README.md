@@ -1,5 +1,7 @@
 # TODO app
 
+![TODO list](main.png)
+
 App for creating, reading, updating and deleting ToDos.
 
 This repository contains two projects: a server and a frontend (`./server/` and `./frontend/` directories respectively).
@@ -15,6 +17,7 @@ For development, run `pnpm dev`: it would start both server and frontend in deve
 ## Try it out!
 
 Want to see it in action?
+
 Run:
 
 ```sh
