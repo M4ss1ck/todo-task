@@ -6,7 +6,7 @@ import Themes from './Themes'
 
 const ToDoList = () => {
     const { todos, changeView } = useToDoContext()
-    return <div className='flex flex-col items-center min-h-screen md:text-xl'>
+    return <div className='flex flex-col items-center justify-center min-h-screen md:text-xl'>
         <section className='flex flex-row items-center justify-between w-full'>
             <div className='flex flex-row mx-auto'>
                 <h1 className='header'>My ToDo list</h1>
