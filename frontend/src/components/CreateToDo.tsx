@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Navigation from './Nav';
 import { useToDoContext } from '../context/ToDoContext';
 import { reloadToDos } from "../utils/reloadToDos"
 
@@ -25,10 +24,12 @@ const CreateToDo = () => {
             </select>
         </div>
         <textarea className="textarea textarea-bordered h-24" placeholder="Task" onChange={(e) => setTask(e.target.value)}></textarea>
-        <button className='btn mb-auto mt-2' onClick={handleCreateToDo}>
+        <button className='btn btn-success my-2' onClick={handleCreateToDo}>
             Add
         </button>
-        <Navigation />
+        <button className='btn btn-error' onClick={() => changeView("ToDpoList")}>
+            Cancel
+        </button>
     </div>
 }
 

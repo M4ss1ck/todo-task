@@ -1,11 +1,9 @@
 import * as React from "react"
 import Interface from "../components/Interface"
 
-// markup
 const IndexPage = () => {
   return (
-    <main>
-      <h1>Home Page</h1>
+    <main className="container mx-auto flex flex-col items-center text-center">
       <Interface />
     </main>
   )

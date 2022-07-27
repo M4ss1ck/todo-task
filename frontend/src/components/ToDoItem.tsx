@@ -27,12 +27,12 @@ const ToDoItem = ({ id, todo }: ToDoItemCtx) => {
     }
 
     return (
-        <div className='flex flex-row gap-2 w-full sm:min-w-[24rem] md:min-w-[36rem] my-2 items-center'>
+        <li className='item'>
             <span className={todo.status === 'done' ? 'badge badge-sm badge-success' : 'badge badge-sm badge-info'}>{todo.status}</span>
             <span className='mr-auto'>{todo.task}</span>
-            <button className='btn btn-sm' onClick={handleEditButton}><Edit /></button>
-            <button className='btn btn-sm' onClick={handleDeleteButton}><Delete /></button>
-        </div>
+            <button className='btn btn-sm btn-warning' onClick={handleEditButton}><Edit /></button>
+            <button className='btn btn-sm btn-error' onClick={handleDeleteButton}><Delete /></button>
+        </li>
     )
 }
 

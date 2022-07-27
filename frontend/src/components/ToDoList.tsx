@@ -1,10 +1,9 @@
 import React from 'react'
-import Navigation from './Nav'
 import ToDoItem from './ToDoItem'
 import { useToDoContext } from '../context/ToDoContext'
 
 const ToDoList = () => {
-    const { todos } = useToDoContext()
+    const { todos, changeView } = useToDoContext()
     return <div className='min-h-screen flex flex-col items-center md:text-xl'>
         <section className='flex flex-row'>
             <h1 className='header'>List</h1>
@@ -12,7 +11,7 @@ const ToDoList = () => {
                 <label tabIndex={0} className="btn btn-circle btn-ghost btn-xs text-info">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-4 h-4 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </label>
-                <div tabIndex={0} className="card compact dropdown-content shadow bg-base-100 rounded-box w-64">
+                <div tabIndex={0} className="card compact dropdown-content shadow bg-base-100 rounded-box w-64 border border-content">
                     <div className="card-body">
                         <h2 className="card-title">This is the ToDo list</h2>
                         <p>Tap the pencil icon to edit a ToDo or the trash bin to delete it</p>
@@ -20,11 +19,17 @@ const ToDoList = () => {
                 </div>
             </div>
         </section>
-        <ul className='mb-auto mt-4 flex flex-col items-center justify-center'>
+        <ul className='my-4 flex flex-col items-center justify-center'>
             {todos.map((todo) => todo.id && <ToDoItem key={todo.id} id={todo.id} todo={todo} />)}
+            <li className='item btn btn-sm btn-ghost h-10' onClick={() => changeView("AddToDo")}><Add /></li>
         </ul>
-        <Navigation />
     </div>
 }
+
+const Add = () => <>
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+    </svg>
+</>
 
 export default ToDoList
