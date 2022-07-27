@@ -24,7 +24,7 @@ const ToDoList = () => {
             </div>
             <Themes />
         </section>
-        <ul className='flex flex-col items-center my-4 max-h-[80vh] overflow-y-auto'>
+        <ul className='flex flex-col items-center my-4 max-h-[80vh] overflow-y-auto overflow-x-hidden'>
             {todos && todos.map((todo) => todo.id && <ToDoItem key={todo.id} id={todo.id} todo={todo} />)}
             <li className='h-10 item btn btn-sm btn-ghost' onClick={() => changeView("AddToDo")}><Add /></li>
         </ul>
