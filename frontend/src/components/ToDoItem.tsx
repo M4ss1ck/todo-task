@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useToDoContext } from '../context/ToDoContext';
+import { reloadToDos } from "../utils/reloadToDos"
 
 interface ToDo {
     status: "pending" | "done"
@@ -12,19 +13,25 @@ interface ToDoItemCtx {
 }
 
 const ToDoItem = ({ id, todo }: ToDoItemCtx) => {
-    const [open, setOpen] = useState(true)
-    const { deleteToDo, changeView, getToDoId } = useToDoContext()
-    const handleClick = () => setOpen(!open)
+    const { deleteToDo, changeView, getToDoId, setTodos } = useToDoContext()
     const handleEditButton = () => {
         getToDoId(id)
         changeView("EditToDo")
     }
+
+    const handleDeleteButton = async () => {
+        await deleteToDo(id)
+        const updatedList = await reloadToDos()
+        setTodos(updatedList)
+        changeView("ToDoList")
+    }
+
     return (
         <div className='flex flex-row gap-2 w-full sm:min-w-[24rem] md:min-w-[36rem] my-2 items-center'>
             <span className={todo.status === 'done' ? 'badge badge-sm badge-success' : 'badge badge-sm badge-info'}>{todo.status}</span>
             <span className='mr-auto'>{todo.task}</span>
             <button className='btn btn-sm' onClick={handleEditButton}><Edit /></button>
-            <button className='btn btn-sm' onClick={() => deleteToDo(id)}><Delete /></button>
+            <button className='btn btn-sm' onClick={handleDeleteButton}><Delete /></button>
         </div>
     )
 }

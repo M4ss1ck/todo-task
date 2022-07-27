@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navigation from './Nav';
 import { useToDoContext } from '../context/ToDoContext';
-import http from '../utils/http';
-
-interface ToDo {
-    id?: number
-    status: "pending" | "done"
-    task: string
-}
+import { reloadToDos } from "../utils/reloadToDos"
 
 const EditToDo = () => {
     const { updateToDo, toDoId, todos, changeView, setTodos } = useToDoContext()
@@ -15,15 +9,10 @@ const EditToDo = () => {
     const [status, setStatus] = useState<"pending" | "done">(currentToDo?.status ?? "pending")
     const [task, setTask] = useState(currentToDo?.task ?? "")
 
-    const readAllToDos = async () => {
-        const response = await http.get("/todos");
-        const responseArr = Object.values(response.data) as ToDo[];
-        setTodos(responseArr);
-    };
-
     const handleEditToDo = async () => {
         await updateToDo(toDoId, { status, task })
-        await readAllToDos();
+        const updatedList = await reloadToDos();
+        setTodos(updatedList)
         changeView("ToDoList")
     }
     return <div className='min-h-screen flex flex-col'>

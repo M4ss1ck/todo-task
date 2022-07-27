@@ -1,28 +1,17 @@
 import React, { useState } from 'react';
 import Navigation from './Nav';
 import { useToDoContext } from '../context/ToDoContext';
-import http from '../utils/http';
-
-interface ToDo {
-    id?: number
-    status: "pending" | "done"
-    task: string
-}
+import { reloadToDos } from "../utils/reloadToDos"
 
 const CreateToDo = () => {
     const [status, setStatus] = useState<"pending" | "done">("pending")
     const [task, setTask] = useState("")
     const { createToDo, setTodos, changeView } = useToDoContext()
 
-    const readAllToDos = async () => {
-        const response = await http.get("/todos");
-        const responseArr = Object.values(response.data) as ToDo[];
-        setTodos(responseArr);
-    };
-
     const handleCreateToDo = async () => {
         await createToDo({ status, task })
-        await readAllToDos();
+        const updatedList = await reloadToDos();
+        setTodos(updatedList)
         changeView("ToDoList")
     }
 
