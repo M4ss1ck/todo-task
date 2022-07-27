@@ -1,6 +1,10 @@
-# How to
+# ToDo app backend
 
-Create postgresql database
+REST API for a TODO app. [ExpressJS](https://expressjs.com/) server connected to a PostgreSQL database using [Knex](http://knexjs.org/) + [Objection](https://vincit.github.io/objection.js/).
+
+## Development
+
+Create PostgreSQL database
 
 ```
 CREATE DATABASE todo
@@ -23,7 +27,7 @@ Run seed files
 knex seed:run --knexfile src/knexfile.js --client pg --connection "postgres://username:password@host:port/database"
 ```
 
-# Endpoints
+## Endpoints
 
 - POST request to /todos to create a new Todo item
 - GET request to /todos/:id to get a Todo item by id
